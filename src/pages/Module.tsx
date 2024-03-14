@@ -6,8 +6,7 @@ function Module() {
   const { dispositiveId, module } = useParams();
   if (module === "sensor")
     return <ModuleSensor dispositiveId={dispositiveId as string} />;
-  else if (module === "actioner")
-    return <ModuleActioner dispositiveId={dispositiveId as string} />;
+  else if (module === "actioner") return <ModuleActioner />;
 }
 
 export default Module;

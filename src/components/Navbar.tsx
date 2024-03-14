@@ -1,8 +1,9 @@
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { Link, useRevalidator } from "react-router-dom";
 import logo from "/logo_soluforce.jpg";
 
 function Navbar() {
+  const revalidator = useRevalidator();
   return (
     <div className="mb-6 bg-base-100">
       <div className="navbar m-auto min-w-[300px] max-w-7xl border-b-2 border-slate-500">
@@ -63,7 +64,9 @@ function Navbar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <button onClick={() => revalidator.revalidate()} className="btn">
+            Refresh
+          </button>
         </div>
       </div>
     </div>

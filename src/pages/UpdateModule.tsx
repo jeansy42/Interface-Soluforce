@@ -1,23 +1,16 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { sendNewModule } from "../libs/auxiliars";
-import Navbar from "../components/Navbar";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import InputErrorMessage from "../components/InputErrorMessage";
+import Navbar from "../components/Navbar";
+import { ModuleInterface, updateModule } from "../libs/auxiliars";
+import { InputsInterface, ParamsProps } from "./AddModule";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
-export interface InputsInterface {
-  name: string;
-  description: string;
-  type: string;
-}
-export interface ParamsProps {
-  dispositiveId: string;
-  moduleId: string;
-}
-
-function AddModule() {
+function UpdateModule() {
+  const module = useLoaderData() as ModuleInterface;
+  delete module["id"];
   const navigate = useNavigate();
-  const { dispositiveId } = useParams() as unknown as ParamsProps;
-  const defaultValues = { name: "", description: "", type: "" };
+  const { dispositiveId, moduleId } = useParams() as unknown as ParamsProps;
+  const defaultValues = module;
   const {
     register,
     handleSubmit,
@@ -26,7 +19,7 @@ function AddModule() {
 
   const onSubmit: SubmitHandler<InputsInterface> = async (data) => {
     try {
-      const res = await sendNewModule(data, dispositiveId as string);
+      const res = await updateModule(data, dispositiveId, moduleId);
       console.log(res);
       navigate("/dispositives", { replace: true });
     } catch (error) {
@@ -37,7 +30,7 @@ function AddModule() {
     <>
       <Navbar />
       <div>
-        <h2 className="mb-4 text-center text-xl font-bold">Agregar Modulo</h2>
+        <h2 className="mb-4 text-center text-xl font-bold">Atualizar Modulo</h2>
         <form
           className="form-control m-auto w-4/5 gap-4 md:w-3/5"
           onSubmit={handleSubmit(onSubmit)}
@@ -94,6 +87,7 @@ function AddModule() {
           )}
           <button className="btn btn-primary flex gap-2" type="submit">
             Enviar
+            {/* {isLoading && <span className="loading loading-dots loading-sm" />} */}
           </button>
         </form>
       </div>
@@ -101,4 +95,4 @@ function AddModule() {
   );
 }
 
-export default AddModule;
+export default UpdateModule;
