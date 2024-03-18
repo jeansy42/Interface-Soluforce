@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { ModuleInterface, deleteModule } from "../libs/auxiliars";
 import ModuleCard from "../components/ModuleCard";
 import { useState } from "react";
+import Main from "../components/Main";
 
 export interface ModuleConfigInterface {
   config: ModuleInterface[];
@@ -46,23 +47,25 @@ function Dispositive() {
         </dialog>
       )}
       <Navbar />
-      <Link className="btn btn-primary" to={`/addModule/${dispositiveId}`}>
-        Agregar Modulo
-      </Link>
-      <div className="grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {config.length === 0 ? (
-          <span>Não tem modulos ainda.</span>
-        ) : (
-          config.map((module) => (
-            <ModuleCard
-              setModuleToDelete={setModuleToDelete}
-              setState={setShowModal}
-              module={module}
-              moduleToDelete={moduleToDelete}
-            />
-          ))
-        )}
-      </div>
+      <Main>
+        <Link className="btn btn-primary" to={`/addModule/${dispositiveId}`}>
+          Agregar Modulo
+        </Link>
+        <div className="grid grid-cols-1 items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {config.length === 0 ? (
+            <span>Não tem modulos ainda.</span>
+          ) : (
+            config.map((module) => (
+              <ModuleCard
+                setModuleToDelete={setModuleToDelete}
+                setState={setShowModal}
+                module={module}
+                moduleToDelete={moduleToDelete}
+              />
+            ))
+          )}
+        </div>
+      </Main>
     </>
   );
 }

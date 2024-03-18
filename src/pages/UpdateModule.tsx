@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { ModuleInterface, updateModule } from "../libs/auxiliars";
 import { InputsInterface, ParamsProps } from "./AddModule";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import Main from "../components/Main";
 
 function UpdateModule() {
   const module = useLoaderData() as ModuleInterface;
@@ -29,7 +30,7 @@ function UpdateModule() {
   return (
     <>
       <Navbar />
-      <div>
+      <Main>
         <h2 className="mb-4 text-center text-xl font-bold">Atualizar Modulo</h2>
         <form
           className="form-control m-auto w-4/5 gap-4 md:w-3/5"
@@ -90,7 +91,7 @@ function UpdateModule() {
             {/* {isLoading && <span className="loading loading-dots loading-sm" />} */}
           </button>
         </form>
-      </div>
+      </Main>
     </>
   );
 }

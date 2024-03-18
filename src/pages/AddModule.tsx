@@ -3,6 +3,7 @@ import { sendNewModule } from "../libs/auxiliars";
 import Navbar from "../components/Navbar";
 import { useForm, SubmitHandler } from "react-hook-form";
 import InputErrorMessage from "../components/InputErrorMessage";
+import Main from "../components/Main";
 
 export interface InputsInterface {
   name: string;
@@ -36,7 +37,7 @@ function AddModule() {
   return (
     <>
       <Navbar />
-      <div>
+      <Main>
         <h2 className="mb-4 text-center text-xl font-bold">Agregar Modulo</h2>
         <form
           className="form-control m-auto w-4/5 gap-4 md:w-3/5"
@@ -96,7 +97,7 @@ function AddModule() {
             Enviar
           </button>
         </form>
-      </div>
+      </Main>
     </>
   );
 }
