@@ -1,9 +1,18 @@
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import { Link, useRevalidator } from "react-router-dom";
 import logo from "/logo_soluforce.jpg";
+import { formatLittleFS } from "../libs/littleFS";
 
 function Navbar() {
   const revalidator = useRevalidator();
+  const handlerFormatLittleFS = async () => {
+    try {
+      const res = await formatLittleFS();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="mb-6 bg-base-100">
       <div className="navbar m-auto min-w-[300px] max-w-7xl border-b-2 border-slate-500">
@@ -20,10 +29,10 @@ function Navbar() {
                 <Link to={"/dispositives"}>Dispositivos</Link>
               </li>
               <li>
-                <a>Parent</a>
+                <span>Network</span>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <Link to={"/redMesh"}>Red Mesh</Link>
                   </li>
                   <li>
                     <a>Submenu 2</a>
@@ -31,7 +40,7 @@ function Navbar() {
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <button onClick={handlerFormatLittleFS}>Format LittleFS</button>
               </li>
             </ul>
           </div>
@@ -47,10 +56,10 @@ function Navbar() {
             </li>
             <li>
               <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
+                <summary>Network</summary>
+                <ul className="p-2 ">
+                  <li className="w-40">
+                    <Link to={"/redMesh"}>Red Mesh</Link>
                   </li>
                   <li>
                     <a>Submenu 2</a>
@@ -59,7 +68,7 @@ function Navbar() {
               </details>
             </li>
             <li>
-              <a>Item 3</a>
+              <button onClick={handlerFormatLittleFS}>Format LittleFS</button>
             </li>
           </ul>
         </div>

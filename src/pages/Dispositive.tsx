@@ -28,10 +28,15 @@ function Dispositive() {
   return (
     <>
       {showModal && (
-        <dialog className={`modal ${showModal ? "modal-open" : ""}`}>
+        <dialog
+          className={`modal modal-bottom sm:modal-middle ${showModal ? "modal-open" : ""}`}
+        >
           <div className="modal-box">
             <h3 className="text-lg font-bold">Apagar modulo</h3>
-            <p className="py-4">Está seguro que deseja apagar este modulo?</p>
+            <p className="py-4">
+              Está seguro que deseja apagar este modulo? O dispositivo será
+              reiniciado.
+            </p>
             <div className="modal-action justify-between">
               <button onClick={handleClickToDelete} className="btn btn-warning">
                 Confirmar

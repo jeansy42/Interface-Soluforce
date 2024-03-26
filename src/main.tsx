@@ -15,9 +15,11 @@ import AddModule from "./pages/AddModule";
 import Module from "./pages/Module";
 import UpdateModule from "./pages/UpdateModule";
 import ErrorPage from "./pages/ErrorPage";
+import RedMeshPage from "./pages/Network/RedMeshPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home />, errorElement: <ErrorPage /> },
+  { path: "/redMesh", element: <RedMeshPage />, errorElement: <ErrorPage /> },
   {
     path: "/dispositives",
     element: <Dispositives />,

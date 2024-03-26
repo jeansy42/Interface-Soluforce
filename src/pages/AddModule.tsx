@@ -89,6 +89,7 @@ function AddModule() {
               Tipo
             </option>
             <option value="actioner">Atuador</option>
+            <option value="doorSensor">Sensor de Porta</option>
           </select>
           {errors.type?.message && (
             <InputErrorMessage message={errors.type.message} />
